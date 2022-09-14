@@ -8,4 +8,7 @@ console.log("afer 120 push", UserName);
 UserName.pop();
 console.log("after pop", UserName);
 
-// delete
+// delete for testing
+
+delete UserName[1];
+console.log("delete an index", UserName);
