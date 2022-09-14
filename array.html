@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Diynamic ways array</title>
+    <style>
+        .main_wrapper {
+            width: 500px;
+            margin: 0 auto;
+            background-color: bisque;
+            padding: 20px;
+        }
+
+        .Add_btn,
+        .Display_btn {
+            padding: 5px 10px;
+            outline: none;
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+            border: 1px solid orangered;
+        }
+
+
+
+        .inputfield {
+            padding: 7px 17px;
+            outline: none;
+            border: none;
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+            color: rgba(30, 39, 46, 70%);
+            font-weight: 500;
+        }
+
+        .list_item {
+            font-size: 15px;
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_wrapper">
+
+        <div class="s0101_input_box_wrapper">
+            <form>
+                <input class="inputfield" type="text" required placeholder="Enter something..." id="input_field_id"
+                    autocomplete="off">
+                <button class="Add_btn" id="Add_btn_id">Add New Item</button>
+                <button class="Display_btn" id="Display_btn_id">Display Item</button>
+            </form>
+        </div>
+        <ul class="list_item">Added Item:
+
+        </ul>
+
+    </div>
+    <script>
+        const Add_btn_id = document.getElementById("Add_btn_id");
+        const Display_btn_id = document.getElementById("Display_btn_id");
+        const emptyArray = [];
+
+        function clearInputField() {
+            document.getElementById("input_field_id").value = ' ';
+        };
+
+        Add_btn_id.addEventListener("click", function (event) {
+            event.preventDefault();
+            let inputValue = document.getElementById("input_field_id").value;
+            if (inputValue.length > 0) {
+                addItemArray(inputValue);
+            }
+            clearInputField();
+        });
+
+
+
+        function addItemArray(inputValue) {
+            console.log("inside function", inputValue);
+            emptyArray.push(inputValue);
+            displayAddedItem(emptyArray)
+        };
+        function displayAddedItem(emptyArray) {
+            for (let i = 0; i < emptyArray.length; i++) {
+                const element = emptyArray[i];
+                console.log("element", element);
+                const li = document.createElement("li");
+                li.innerText = element;
+                Display_btn_id.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    document.querySelector(".list_item").appendChild(li);
+                });
+
+            }
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
